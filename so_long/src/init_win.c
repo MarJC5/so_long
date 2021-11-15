@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:26:56 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:19:00 by jmartin          ###   ########.fr       */
+/*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
+/*   Updated: 2021/11/14 17:07:38 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	so_long(char *map)
+int	init_win(int size_x, int size_y)
 {
-	if (check_map_name(map))
-		process_map_file(map);
-		//init_win(640, 480);
-	else
-		ft_putendl_fd(MAP_ARG_NAME_ERROR, 2);
-}
+	t_view	view;
 
-int	main(int argc, char *argv[])
-{
-	if (argc < 2)
-		ft_putendl_fd(MAP_ARG_NAME_MISSING, 2);
-	else
-		so_long(argv[1]);
-	return (0);
+	view.mlx = mlx_init();
+	view.win = mlx_new_window(view.mlx, size_x, size_y, "moshi");
+	mlx_loop_hook(view.mlx, render_next_key_event, &view);
+	mlx_loop(view.mlx);
+	return (1);
 }

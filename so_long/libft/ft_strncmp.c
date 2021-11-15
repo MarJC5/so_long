@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:26:56 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:19:00 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/13 09:27:36 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/14 14:24:48 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	so_long(char *map)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (check_map_name(map))
-		process_map_file(map);
-		//init_win(640, 480);
-	else
-		ft_putendl_fd(MAP_ARG_NAME_ERROR, 2);
-}
+	size_t	i;
 
-int	main(int argc, char *argv[])
-{
-	if (argc < 2)
-		ft_putendl_fd(MAP_ARG_NAME_MISSING, 2);
-	else
-		so_long(argv[1]);
-	return (0);
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (--n && s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			break ;
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

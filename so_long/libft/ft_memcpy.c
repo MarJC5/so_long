@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:26:56 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:19:00 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/13 11:24:44 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/15 10:59:01 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	so_long(char *map)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (check_map_name(map))
-		process_map_file(map);
-		//init_win(640, 480);
-	else
-		ft_putendl_fd(MAP_ARG_NAME_ERROR, 2);
-}
+	char		*sdst;
+	const char	*ssrc;
+	size_t		i;
 
-int	main(int argc, char *argv[])
-{
-	if (argc < 2)
-		ft_putendl_fd(MAP_ARG_NAME_MISSING, 2);
-	else
-		so_long(argv[1]);
-	return (0);
+	i = -1;
+	sdst = (char *)dst;
+	ssrc = (const char *)src;
+	if (!sdst && !ssrc)
+		return (NULL);
+	while (++i < n)
+		sdst[i] = ssrc[i];
+	return (dst);
 }

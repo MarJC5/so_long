@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:26:56 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:19:00 by jmartin          ###   ########.fr       */
+/*   Created: 2021/10/15 07:13:15 by jmartin           #+#    #+#             */
+/*   Updated: 2021/10/18 09:31:43 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	so_long(char *map)
+void	*ft_calloc(size_t ecount, size_t esize)
 {
-	if (check_map_name(map))
-		process_map_file(map);
-		//init_win(640, 480);
-	else
-		ft_putendl_fd(MAP_ARG_NAME_ERROR, 2);
-}
+	void	*ptr;
 
-int	main(int argc, char *argv[])
-{
-	if (argc < 2)
-		ft_putendl_fd(MAP_ARG_NAME_MISSING, 2);
-	else
-		so_long(argv[1]);
-	return (0);
+	ptr = malloc(ecount * esize);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, ecount * esize);
+	return (ptr);
 }

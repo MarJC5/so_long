@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:26:56 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:19:00 by jmartin          ###   ########.fr       */
+/*   Created: 2021/11/14 14:58:15 by jmartin           #+#    #+#             */
+/*   Updated: 2021/11/14 16:27:27 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	so_long(char *map)
+int	key_esc_win(int key, t_view *view)
 {
-	if (check_map_name(map))
-		process_map_file(map);
-		//init_win(640, 480);
-	else
-		ft_putendl_fd(MAP_ARG_NAME_ERROR, 2);
+	ft_putendl_fd("ESC", 1);
+	mlx_destroy_window(view->mlx, view->win);
+	exit(0);
+	return (key);
 }
 
-int	main(int argc, char *argv[])
+int	key_right_event(int key)
 {
-	if (argc < 2)
-		ft_putendl_fd(MAP_ARG_NAME_MISSING, 2);
-	else
-		so_long(argv[1]);
-	return (0);
+	ft_putendl_fd("RIGHT", 1);
+	return (key);
+}
+
+int	key_left_event(int key)
+{
+	ft_putendl_fd("LEFT", 1);
+	return (key);
+}
+
+int	key_up_event(int key)
+{
+	ft_putendl_fd("UP", 1);
+	return (key);
+}
+
+int	key_down_event(int key)
+{
+	ft_putendl_fd("DOWN", 1);
+	return (key);
 }

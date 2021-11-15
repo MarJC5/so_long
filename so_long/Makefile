@@ -7,15 +7,22 @@ RESET	= \033[0m
 RUN		= so_long
 NAME 	= so_long.a
 MLX 	= ./mlx
+LIBFT 	= ./libft
 FOLDER 	= src/
+LIB 	= -L ./libft -lft -L ./mlx -lmlx
 
 RM 		= rm -f
 CC 		= cc
-AR		= ar -rcs
-CFLAGS 	= -Wall -Werror -Wextra -Imlx
-OPTIONS = -Lmlx -lmlx -lz -framework OpenGL -framework AppKit
+CFLAGS 	= -Wall -Werror -Wextra
+OPTIONS = -Lmlx -lmlx -lz -framework OpenGL -framework AppKit #To link with the required internal macOS API
 
-FILES 	= main.c
+FILES 	=	main.c \
+			draw_pixel.c \
+			init_win.c \
+			key_action.c \
+			key_event.c \
+			get_map.c \
+			get_next_line.c
 SOURCES = $(addprefix $(FOLDER), $(FILES))
 OBJ		= $(SOURCES:.c=.o)
 
@@ -23,21 +30,25 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(MAKE) -C $(MLX)
-	@cp $(MLX)/libmlx.a $(NAME)
-	@$(CC) $(CFLAGS) $(OPTIONS) -o $(RUN) $(OBJ)
-	@$(AR) $(NAME) $(OBJ)
+	@$(MAKE) -C $(LIBFT)
+	@$(CC) $(CFLAGS) $(OPTIONS) -o $(RUN) $(OBJ) $(LIB)
 	@echo "[$(GREEN)created$(RESET)]: Run the program with \033[1m$(RUN) 'map name'$(RESET)"
 
 clean :
 	@$(RM) $(OBJ)
 	@$(RM) $(RUN)
 	@$(MAKE) -C $(MLX) clean
+	@$(MAKE) -C $(LIBFT) clean
 	@echo "[$(RED)deleted$(RESET)]: all *.o files"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "[$(RED)deleted$(RESET)]: $(NAME) and libmlx.a"
+	@$(MAKE) -C $(LIBFT) fclean
+	@echo "[$(RED)deleted$(RESET)]: $(NAME), libmlx.a and libft.a"
+
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt -s ./$(RUN) small.ber
 
 re: fclean all
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean valgrind
