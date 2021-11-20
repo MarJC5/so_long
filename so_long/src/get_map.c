@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:19:03 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/20 17:46:40 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,21 @@ int	check_map_name(char *str)
 
 int	process_map_file(char *path)
 {
-	int	fd;
-
+	int		fd;
+	char	*result;
+	
+	ft_putendl_fd(path, 1);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		ft_putendl_fd("Cannot open the file.", 2);
 	else
 	{
-		get_next_line(fd);
+		result = get_next_line(fd);
+		while (result != NULL)
+		{
+			ft_putstr_fd(result, 1);
+			result = get_next_line(fd);
+		}
 		return (1);
 	}
 	if (close(fd) == -1)
