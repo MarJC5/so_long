@@ -6,11 +6,29 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/20 17:46:40 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/22 19:38:54 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int	check_map_validity(char **result)
+{
+	if (!ft_strchr(*result, 'E'))
+		ft_putendl_fd("The map doesn't have a valid exit (E).", 2);
+	else if (!ft_strchr(*result, 'P'))
+		ft_putendl_fd("The map doesn't have a valid player position (P).", 2);
+	else if (!ft_strchr(*result, 'C'))
+		ft_putendl_fd("The map doesn't have a collectible (C).", 2);
+	else if (!ft_strchr(*result, '1'))
+		ft_putendl_fd("The map doesn't have walls (1).", 2);
+	else if (!ft_strchr(*result, '0'))
+		ft_putendl_fd("The map doesn't have ground (0).", 2);
+	else
+		return (1);
+	exit (0);
+	return (0);
+}
 
 int	check_map_name(char *str)
 {
@@ -27,26 +45,28 @@ int	check_map_name(char *str)
 	return (0);
 }
 
-int	process_map_file(char *path)
+int	process_map_file(int fd, char **save)
 {
-	int		fd;
-	char	*result;
-	
-	ft_putendl_fd(path, 1);
-	fd = open(path, O_RDONLY);
+	int			height;
+	int			width;
+	char		*result;
+
+	width = 0;
+	height = 0;
 	if (fd == -1)
 		ft_putendl_fd("Cannot open the file.", 2);
 	else
 	{
 		result = get_next_line(fd);
+		width = ft_strchr_pos(result, '\n');
 		while (result != NULL)
 		{
-			ft_putstr_fd(result, 1);
+			*save = ft_strjoin(*save, result);
 			result = get_next_line(fd);
+			height++;
 		}
-		return (1);
+		check_map_validity(save);
+		init_win(width, height, save);
 	}
-	if (close(fd) == -1)
-		ft_putendl_fd("Error, cannot close the file.", 2);
-	return (0);
+	return (1);
 }

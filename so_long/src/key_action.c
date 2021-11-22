@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:15 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 16:27:27 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/22 12:47:05 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	key_esc_win(int key, t_view *view)
 {
-	ft_putendl_fd("ESC", 1);
-	mlx_destroy_window(view->mlx, view->win);
+	(void)view;
 	exit(0);
 	return (key);
 }

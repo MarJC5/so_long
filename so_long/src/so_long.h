@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 18:20:23 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/23 00:19:29 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,17 @@
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_ESC 53
+# define TILE_SIZE 32
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE	42
+#  define BUFFER_SIZE	1000
 # endif
 
 /*
 * Struct
 */
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -54,8 +55,8 @@ typedef struct	s_data {
 typedef struct s_view {
 	void		*mlx;
 	void		*win;
-	//t_player	player;
-	//t_enemy		enemy;
+	int			x;
+	int			y;
 }				t_view;
 
 typedef struct s_move {
@@ -70,7 +71,6 @@ typedef struct s_player {
 typedef struct s_enemy {
 	t_view	*move;
 }				t_enemy;
-
 
 /*
 * Key events
@@ -88,7 +88,15 @@ int		key_esc_win(int key, t_view *view);
 * Window
 */
 
-int		init_win(int size_x, int size_y);
+int		init_tile(char *path, int x, int y, t_view *view);
+int		init_win(int size_x, int size_y, char **map);
+
+/*
+* Tile
+*/
+
+int		set_background(t_view *view);
+int		set_items(t_view *view, char **map, char *filepath, int c);
 void	pixel_put(t_data *data, int x, int y, int color);
 
 /*
@@ -96,8 +104,14 @@ void	pixel_put(t_data *data, int x, int y, int color);
 */
 
 int		check_map_name(char *str);
-int		process_map_file(char *path);
+int		process_map_file(int fd, char **save);
 char	*get_next_line(int fd);
+
+/*
+* Utils
+*/
+
+int		ft_strchr_pos(const char *str, int c);
 
 void	so_long(char *map);
 

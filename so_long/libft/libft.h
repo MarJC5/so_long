@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 21:30:49 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 17:53:22 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/22 12:22:55 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int		ft_words_count(char const *str, char c);
+int		ft_numiterate(unsigned long n);
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
@@ -60,6 +61,7 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *str, char c);
+char	*ft_revchar_tab(char *tab, int size);
 
 size_t	ft_strlcat(char *dst, const char *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t n);

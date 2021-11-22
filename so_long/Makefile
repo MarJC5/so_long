@@ -13,7 +13,7 @@ LIB 	= -L ./libft -lft -L ./mlx -lmlx
 
 RM 		= rm -f
 CC 		= cc
-CFLAGS 	= -Wall -Werror -Wextra
+CFLAGS 	= -Wall -Werror -Wextra -I.
 OPTIONS = -Lmlx -lmlx -lz -framework OpenGL -framework AppKit #To link with the required internal macOS API
 
 FILES 	=	main.c \
@@ -22,7 +22,9 @@ FILES 	=	main.c \
 			key_action.c \
 			key_event.c \
 			get_map.c \
-			get_next_line.c
+			get_next_line.c \
+			setup_img.c \
+			utils.c
 SOURCES = $(addprefix $(FOLDER), $(FILES))
 OBJ		= $(SOURCES:.c=.o)
 

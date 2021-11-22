@@ -6,13 +6,13 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 12:00:44 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 16:58:49 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/22 12:24:10 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_revchar_tab(char *tab, int size)
+char	*ft_revchar_tab(char *tab, int size)
 {
 	int	i;
 	int	temp;
@@ -29,7 +29,7 @@ static char	*ft_revchar_tab(char *tab, int size)
 	return (tab);
 }
 
-static int	ft_numiterate(int n)
+int	ft_numiterate(unsigned long n)
 {
 	int	i;
 
