@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/23 00:19:29 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/23 14:21:09 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,15 @@
 
 # define MAP_ARG_NAME_MISSING "Enter a map \033[1;32m*.ber\033[0m as argument"
 # define MAP_ARG_NAME_ERROR "Wrong map extension, must be \033[1;32m*.ber\033[0m"
+# define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
-# define KEY_ESC 53
+# define KEY_TOP 126
+# define KEY_RIGHT 124
+# define KEY_DOWN 125
+# define KEY_LEFT 123
 # define TILE_SIZE 32
 
 # ifndef BUFFER_SIZE
@@ -52,25 +56,59 @@ typedef struct s_data {
 	int		endian;
 }				t_data;
 
+typedef struct s_pos {
+	int			x;
+	int			y;
+}				t_pos;
+
+typedef struct s_player {
+	char	*idle_0;
+	char	*idle_1;
+	char	*idle_2;
+	char	*idle_3;
+	char	*idle_4;
+	char	*idle_5;
+	char	*idle_6;
+	char	*idle_7;
+	char	*walk_0;
+	char	*walk_1;
+	char	*walk_2;
+	char	*walk_3;
+	char	*walk_4;
+	char	*walk_5;
+	char	*walk_6;
+	char	*walk_7;
+	t_pos		*pos;
+}				t_player;
+
+
+typedef struct s_coin {
+	char		*coin_0;
+	char		*coin_1;
+	char		*coin_2;
+	char		*coin_3;
+	char		*coin_4;
+	char		*coin_5;
+	t_pos		pos;
+}				t_coin;
+
+typedef struct s_map {
+	char		*map;
+	char		*wall;
+	char		*ground;
+	char		*exit_open;
+	char		*exit_close;
+	t_coin		coin;
+}				t_map;
+
 typedef struct s_view {
 	void		*mlx;
 	void		*win;
 	int			x;
 	int			y;
+	t_map		map;
+	t_player	player;
 }				t_view;
-
-typedef struct s_move {
-	int		x;
-	int		y;
-}				t_move;
-
-typedef struct s_player {
-	t_view	*move;
-}				t_player;
-
-typedef struct s_enemy {
-	t_view	*move;
-}				t_enemy;
 
 /*
 * Key events
@@ -78,25 +116,25 @@ typedef struct s_enemy {
 
 int		render_next_key_event(t_view *view);
 int		key_event(int keyvalue, t_view *view);
-int		key_right_event(int key);
-int		key_left_event(int key);
-int		key_up_event(int key);
-int		key_down_event(int key);
+int		key_right_event(int key, t_view *view);
+int		key_left_event(int key, t_view *view);
+int		key_up_event(int key, t_view *view);
+int		key_down_event(int key, t_view *view);
 int		key_esc_win(int key, t_view *view);
 
 /*
 * Window
 */
 
-int		init_tile(char *path, int x, int y, t_view *view);
+int		init_tile(char *tile, int x, int y, t_view *view);
 int		init_win(int size_x, int size_y, char **map);
 
 /*
 * Tile
 */
-
-int		set_background(t_view *view);
-int		set_items(t_view *view, char **map, char *filepath, int c);
+int		init_sprites(t_view *view, int *img_width, int *img_height);
+int		set_background(t_view *view, char *tile);
+int		set_static_items(t_view *view, char *filepath, int c);
 void	pixel_put(t_data *data, int x, int y, int color);
 
 /*
@@ -106,6 +144,12 @@ void	pixel_put(t_data *data, int x, int y, int color);
 int		check_map_name(char *str);
 int		process_map_file(int fd, char **save);
 char	*get_next_line(int fd);
+
+/*
+* Player
+*/
+
+int		idle_event(t_view *view);
 
 /*
 * Utils

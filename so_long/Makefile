@@ -24,6 +24,7 @@ FILES 	=	main.c \
 			get_map.c \
 			get_next_line.c \
 			setup_img.c \
+			init_sprites.c \
 			utils.c
 SOURCES = $(addprefix $(FOLDER), $(FILES))
 OBJ		= $(SOURCES:.c=.o)
