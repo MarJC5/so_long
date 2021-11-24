@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 07:57:16 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 13:18:38 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	init_tile_map(t_view *view)
 	ft_putendl_fd(view->map->map, 1);
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'G');
 	set_static_items(view, "./img/xpm/tiles/1.0.xpm", '1');
+	set_static_items(view, "./img/xpm/exit/E.0.xpm", 'E');
+	set_static_items(view, "./img/xpm/coin/C.0.xpm", 'C');
 	init_player_pos(view);
 	return (1);
 }

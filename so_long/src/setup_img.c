@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:14:45 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 07:52:33 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 12:48:25 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	init_tile(char *path, int x, int y, t_view *view)
 
 int	move_player(t_view *view, char *sprites)
 {
+	init_tile("./img/xpm/tiles/1.1.xpm", view->player->pos->x, view->player->pos->y, view);
 	init_tile(sprites, view->player->pos->x, view->player->pos->y, view);
 	return (1);
 }
@@ -35,24 +36,9 @@ int	idle_player(t_view *view, int x, int y)
 	int		h;
 	char	*img;
 
+	init_tile("./img/xpm/tiles/1.1.xpm", x, y, view);
 	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.0.xpm", &w, &h);
 	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
-	mlx_destroy_image(view->mlx, img);
-	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.1.xpm", &w, &h);
-	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
-	mlx_destroy_image(view->mlx, img);
-	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.2.xpm", &w, &h);
-	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
-	mlx_destroy_image(view->mlx, img);
-	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.3.xpm", &w, &h);
-	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
-	mlx_destroy_image(view->mlx, img);
-	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.4.xpm", &w, &h);
-	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
-	mlx_destroy_image(view->mlx, img);
-	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.5.xpm", &w, &h);
-	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
-	mlx_destroy_image(view->mlx, img);
 	return (1);
 }
 
