@@ -6,15 +6,21 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 01:01:41 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 07:57:16 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	init_player_pos(t_view *view)
+int	init_player_idle(t_view *view)
 {
 	set_static_items(view, "./img/xpm/player/walk-right/P.1.0.xpm", 'P');
+	return (1);
+}
+
+int	init_player_pos(t_view *view)
+{
+	mlx_loop_hook(view->mlx, init_player_idle, view);
 	set_player_pos(view);
 	return (1);
 }

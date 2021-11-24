@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 01:02:16 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 07:51:44 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ char	*get_next_line(int fd);
 */
 
 int		move_player(t_view *view, char *sprites);
+int		idle_player(t_view *view, int x, int y);
 
 /*
 * Utils

@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:14:45 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 01:00:16 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 07:52:33 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,33 @@ int	move_player(t_view *view, char *sprites)
 	return (1);
 }
 
+int	idle_player(t_view *view, int x, int y)
+{
+	int		w;
+	int		h;
+	char	*img;
+
+	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.0.xpm", &w, &h);
+	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	mlx_destroy_image(view->mlx, img);
+	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.1.xpm", &w, &h);
+	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	mlx_destroy_image(view->mlx, img);
+	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.2.xpm", &w, &h);
+	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	mlx_destroy_image(view->mlx, img);
+	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.3.xpm", &w, &h);
+	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	mlx_destroy_image(view->mlx, img);
+	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.4.xpm", &w, &h);
+	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	mlx_destroy_image(view->mlx, img);
+	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.5.xpm", &w, &h);
+	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	mlx_destroy_image(view->mlx, img);
+	return (1);
+}
+
 int	set_static_items(t_view *view, char *tile, int c)
 {
 	int	i;
@@ -41,7 +68,9 @@ int	set_static_items(t_view *view, char *tile, int c)
 	while (view->y > ++y)
 	{
 		while ((view->map->map)[++i] && view->x > ++x)
-			if ((view->map->map)[i] == c || c == 'G')
+			if ((view->map->map)[i] == 'P')
+				idle_player(view, x * TILE_SIZE, y * TILE_SIZE);
+			else if ((view->map->map)[i] == c || c == 'G')
 				init_tile(tile, x * TILE_SIZE, y * TILE_SIZE, view);
 		x = -1;
 	}
