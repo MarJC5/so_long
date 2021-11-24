@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/23 14:21:09 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 01:02:16 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,6 @@
 * Struct
 */
 
-typedef struct s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 typedef struct s_pos {
 	int			x;
 	int			y;
@@ -70,17 +62,24 @@ typedef struct s_player {
 	char	*idle_5;
 	char	*idle_6;
 	char	*idle_7;
-	char	*walk_0;
-	char	*walk_1;
-	char	*walk_2;
-	char	*walk_3;
-	char	*walk_4;
-	char	*walk_5;
-	char	*walk_6;
-	char	*walk_7;
-	t_pos		*pos;
+	char	*walk_r0;
+	char	*walk_r1;
+	char	*walk_r2;
+	char	*walk_r3;
+	char	*walk_r4;
+	char	*walk_r5;
+	char	*walk_r6;
+	char	*walk_r7;
+	char	*walk_l0;
+	char	*walk_l1;
+	char	*walk_l2;
+	char	*walk_l3;
+	char	*walk_l4;
+	char	*walk_l5;
+	char	*walk_l6;
+	char	*walk_l7;
+	t_pos	*pos;
 }				t_player;
-
 
 typedef struct s_coin {
 	char		*coin_0;
@@ -89,7 +88,7 @@ typedef struct s_coin {
 	char		*coin_3;
 	char		*coin_4;
 	char		*coin_5;
-	t_pos		pos;
+	t_pos		*pos;
 }				t_coin;
 
 typedef struct s_map {
@@ -98,7 +97,7 @@ typedef struct s_map {
 	char		*ground;
 	char		*exit_open;
 	char		*exit_close;
-	t_coin		coin;
+	t_coin		*coin;
 }				t_map;
 
 typedef struct s_view {
@@ -106,8 +105,8 @@ typedef struct s_view {
 	void		*win;
 	int			x;
 	int			y;
-	t_map		map;
-	t_player	player;
+	t_map		*map;
+	t_player	*player;
 }				t_view;
 
 /*
@@ -128,14 +127,14 @@ int		key_esc_win(int key, t_view *view);
 
 int		init_tile(char *tile, int x, int y, t_view *view);
 int		init_win(int size_x, int size_y, char **map);
+int		init_player_pos(t_view *view);
 
 /*
 * Tile
 */
-int		init_sprites(t_view *view, int *img_width, int *img_height);
-int		set_background(t_view *view, char *tile);
-int		set_static_items(t_view *view, char *filepath, int c);
-void	pixel_put(t_data *data, int x, int y, int color);
+
+int		set_static_items(t_view *view, char *tile, int c);
+int		set_player_pos(t_view *view);
 
 /*
 * Map
@@ -149,13 +148,17 @@ char	*get_next_line(int fd);
 * Player
 */
 
-int		idle_event(t_view *view);
+int		move_player(t_view *view, char *sprites);
 
 /*
 * Utils
 */
 
 int		ft_strchr_pos(const char *str, int c);
+
+/*
+* Game
+*/
 
 void	so_long(char *map);
 

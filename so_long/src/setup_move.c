@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_pixel.c                                       :+:      :+:    :+:   */
+/*   setup_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 10:27:51 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/14 10:37:09 by jmartin          ###   ########.fr       */
+/*   Created: 2021/11/24 00:35:22 by jmartin           #+#    #+#             */
+/*   Updated: 2021/11/24 00:35:24 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	pixel_put(t_data *data, int x, int y, int color)
+int	set_player_pos(t_view *view)
 {
-	char	*dst;
+	int	i;
+	int	x;
+	int	y;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	x = -1;
+	y = -1;
+	i = -1;
+	while (view->y > ++y)
+	{
+		while ((view->map->map)[++i] && view->x > ++x)
+		{
+			if ((view->map->map)[i] == 'P')
+			{
+				view->player->pos->x = x * TILE_SIZE;
+				view->player->pos->y = y * TILE_SIZE;
+			}
+		}
+		x = -1;
+	}
+	return (1);
 }

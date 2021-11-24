@@ -17,14 +17,13 @@ CFLAGS 	= -Wall -Werror -Wextra -I.
 OPTIONS = -Lmlx -lmlx -lz -framework OpenGL -framework AppKit #To link with the required internal macOS API
 
 FILES 	=	main.c \
-			draw_pixel.c \
 			init_win.c \
 			key_action.c \
 			key_event.c \
 			get_map.c \
 			get_next_line.c \
 			setup_img.c \
-			init_sprites.c \
+			setup_move.c \
 			utils.c
 SOURCES = $(addprefix $(FOLDER), $(FILES))
 OBJ		= $(SOURCES:.c=.o)
