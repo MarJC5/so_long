@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 07:51:44 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 16:52:49 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,43 +51,18 @@
 typedef struct s_pos {
 	int			x;
 	int			y;
+	int			z;
 }				t_pos;
 
 typedef struct s_player {
-	char	*idle_0;
-	char	*idle_1;
-	char	*idle_2;
-	char	*idle_3;
-	char	*idle_4;
-	char	*idle_5;
-	char	*idle_6;
-	char	*idle_7;
-	char	*walk_r0;
-	char	*walk_r1;
-	char	*walk_r2;
-	char	*walk_r3;
-	char	*walk_r4;
-	char	*walk_r5;
-	char	*walk_r6;
-	char	*walk_r7;
-	char	*walk_l0;
-	char	*walk_l1;
-	char	*walk_l2;
-	char	*walk_l3;
-	char	*walk_l4;
-	char	*walk_l5;
-	char	*walk_l6;
-	char	*walk_l7;
+	char	*idle;
+	char	*walk_r;
+	char	*walk_l;
 	t_pos	*pos;
 }				t_player;
 
 typedef struct s_coin {
-	char		*coin_0;
-	char		*coin_1;
-	char		*coin_2;
-	char		*coin_3;
-	char		*coin_4;
-	char		*coin_5;
+	char		*img;
 	t_pos		*pos;
 }				t_coin;
 
@@ -127,8 +102,6 @@ int		key_esc_win(int key, t_view *view);
 
 int		init_tile(char *tile, int x, int y, t_view *view);
 int		init_win(int size_x, int size_y, char **map);
-int		init_player_pos(t_view *view);
-
 /*
 * Tile
 */
@@ -148,6 +121,7 @@ char	*get_next_line(int fd);
 * Player
 */
 
+int		detect_tile_info(t_view *view, int keyvalue);
 int		move_player(t_view *view, char *sprites);
 int		idle_player(t_view *view, int x, int y);
 

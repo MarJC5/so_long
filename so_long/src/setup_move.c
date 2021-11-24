@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:35:22 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 00:35:24 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/24 17:30:32 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	set_player_pos(t_view *view)
 			{
 				view->player->pos->x = x * TILE_SIZE;
 				view->player->pos->y = y * TILE_SIZE;
+				view->player->pos->z = i;
 			}
 		}
 		x = -1;
