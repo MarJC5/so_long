@@ -22,6 +22,7 @@ FILES 	=	main.c \
 			key_event.c \
 			get_map.c \
 			get_next_line.c \
+			setup_collision.c \
 			setup_img.c \
 			setup_move.c \
 			utils.c
