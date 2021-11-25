@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 14:29:47 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 16:23:47 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	init_tile_map(t_view *view)
 	set_static_items(view, "./img/xpm/coin/C.0.xpm", 'C');
 	init_player_pos(view);
 	count_coins(view);
+	counter_event(view);
 	return (1);
 }
 

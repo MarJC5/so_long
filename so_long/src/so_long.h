@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 14:29:23 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 16:26:21 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@
 /*
 * Struct
 */
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef struct s_pos {
 	int			x;
@@ -125,6 +133,7 @@ int		idle_player(t_view *view, int x, int y);
 * Utils
 */
 
+int		counter_event(t_view *view);
 int		esc_win(t_view *view);
 int		open_door(t_view *view);
 int		count_coins(t_view *view);
