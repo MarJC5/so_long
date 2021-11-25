@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 16:52:49 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 00:46:47 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_player {
 
 typedef struct s_coin {
 	char		*img;
-	t_pos		*pos;
+	int			count;
 }				t_coin;
 
 typedef struct s_map {
@@ -89,11 +89,11 @@ typedef struct s_view {
 */
 
 int		render_next_key_event(t_view *view);
-int		key_event(int keyvalue, t_view *view);
-int		key_right_event(int key, t_view *view);
-int		key_left_event(int key, t_view *view);
-int		key_up_event(int key, t_view *view);
-int		key_down_event(int key, t_view *view);
+int		key_event(int key, t_view *view);
+int		key_right_event(int key, int swap_pos, t_view *view);
+int		key_left_event(int key, int swap_pos, t_view *view);
+int		key_up_event(int key, int swap_pos, t_view *view);
+int		key_down_event(int key, int swap_pos, t_view *view);
 int		key_esc_win(int key, t_view *view);
 
 /*
@@ -102,6 +102,7 @@ int		key_esc_win(int key, t_view *view);
 
 int		init_tile(char *tile, int x, int y, t_view *view);
 int		init_win(int size_x, int size_y, char **map);
+
 /*
 * Tile
 */
@@ -121,14 +122,17 @@ char	*get_next_line(int fd);
 * Player
 */
 
-int		detect_tile_info(t_view *view, int keyvalue);
 int		move_player(t_view *view, char *sprites);
 int		idle_player(t_view *view, int x, int y);
+
 
 /*
 * Utils
 */
 
+int		is_coins_taken(int key, int position, t_view *view);
+int		count_coins(t_view *view);
+int		open_door(t_view *view, int key);
 int		ft_strchr_pos(const char *str, int c);
 
 /*

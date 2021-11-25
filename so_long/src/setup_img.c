@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:14:45 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 16:47:08 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 00:54:05 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,10 @@ int	init_tile(char *path, int x, int y, t_view *view)
 	return (1);
 }
 
-int	move_player(t_view *view, char *sprites)
-{
-	init_tile("./img/xpm/tiles/1.1.xpm", view->player->pos->x, view->player->pos->y, view);
-	init_tile(sprites, view->player->pos->x, view->player->pos->y, view);
-	return (1);
-}
-
 int	idle_player(t_view *view, int x, int y)
 {
-	int		w;
-	int		h;
-	char	*img;
-
 	init_tile("./img/xpm/tiles/1.1.xpm", x, y, view);
-	img = mlx_xpm_file_to_image(view->mlx, "./img/xpm/player/idle/P.0.0.xpm", &w, &h);
-	mlx_put_image_to_window(view->mlx, view->win, img, x, y);
+	init_tile("./img/xpm/player/idle/P.0.0.xpm", x, y, view);
 	return (1);
 }
 
@@ -55,7 +43,7 @@ int	set_static_items(t_view *view, char *tile, int c)
 	{
 		while ((view->map->map)[++i] && view->x > ++x)
 		{
-			if ((view->map->map)[i] == 'P')
+			if ((view->map->map)[i] == 'P' && view->map->coin->count > 0)
 				idle_player(view, x * TILE_SIZE, y * TILE_SIZE);
 			else if ((view->map->map)[i] == c || c == 'G')
 				init_tile(tile, x * TILE_SIZE, y * TILE_SIZE, view);

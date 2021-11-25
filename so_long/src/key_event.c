@@ -6,25 +6,29 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/23 23:41:13 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 00:42:42 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_event(int keyvalue, t_view *view)
+int	key_event(int key, t_view *view)
 {
-	if (keyvalue == KEY_ESC)
-		key_esc_win(keyvalue, view);
-	else if (keyvalue == KEY_W || keyvalue == KEY_TOP)
-		key_up_event(keyvalue, view);
-	else if (keyvalue == KEY_A || keyvalue == KEY_LEFT)
-		key_left_event(keyvalue, view);
-	else if (keyvalue == KEY_S || keyvalue == KEY_DOWN)
-		key_down_event(keyvalue, view);
-	else if (keyvalue == KEY_D || keyvalue == KEY_RIGHT)
-		key_right_event(keyvalue, view);
-	return (keyvalue);
+	int position;
+
+	position = view->map->map[view->player->pos->z];
+	init_tile("./img/xpm/tiles/1.1.xpm", view->player->pos->x, view->player->pos->y, view);
+	if (key == KEY_ESC)
+		key_esc_win(key, view);
+	else if (key == KEY_W || key == KEY_TOP)
+		key_up_event(key, position, view);
+	else if (key == KEY_A || key == KEY_LEFT)
+		key_left_event(key, position, view);
+	else if (key == KEY_S || key == KEY_DOWN)
+		key_down_event(key, position, view);
+	else if (key == KEY_D || key == KEY_RIGHT)
+		key_right_event(key, position, view);
+	return (key);
 }
 
 int	render_next_key_event(t_view *view)
