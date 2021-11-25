@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 07:50:10 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 10:24:19 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,11 @@ typedef struct s_view {
 
 int		render_next_key_event(t_view *view);
 int		key_event(int key, t_view *view);
-int		key_right_event(int key, int swap_pos, t_view *view);
-int		key_left_event(int key, int swap_pos, t_view *view);
-int		key_up_event(int key, int swap_pos, t_view *view);
-int		key_down_event(int key, int swap_pos, t_view *view);
+int		key_right_event(int swap_pos, t_view *view);
+int		key_left_event(int swap_pos, t_view *view);
+int		key_up_event(int swap_pos, t_view *view);
+int		key_down_event(int swap_pos, t_view *view);
 int		key_esc_win(int key, t_view *view);
-
-/*
-* Window
-*/
-
 int		init_tile(char *tile, int x, int y, t_view *view);
 int		init_win(int size_x, int size_y, char **map);
 
@@ -125,14 +120,14 @@ char	*get_next_line(int fd);
 int		move_player(t_view *view, char *sprites);
 int		idle_player(t_view *view, int x, int y);
 
-
 /*
 * Utils
 */
 
-int		is_coins_taken(int position, t_view *view);
+int		open_door(t_view *view, int next_tile, char *sprites);
 int		count_coins(t_view *view);
-int		open_door(t_view *view);
+int		is_coins_taken(int position, int next_tile,
+			char *sprites, t_view *view);
 int		ft_strchr_pos(const char *str, int c);
 
 /*

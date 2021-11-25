@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:14:45 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 00:54:05 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 09:26:46 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	set_static_items(t_view *view, char *tile, int c)
 	{
 		while ((view->map->map)[++i] && view->x > ++x)
 		{
-			if ((view->map->map)[i] == 'P' && view->map->coin->count > 0)
+			if ((view->map->map)[i] == 'P')
 				idle_player(view, x * TILE_SIZE, y * TILE_SIZE);
 			else if ((view->map->map)[i] == c || c == 'G')
 				init_tile(tile, x * TILE_SIZE, y * TILE_SIZE, view);

@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 07:57:21 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 10:14:10 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	count_coins(t_view *view)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	view->map->coin->count = 0;
@@ -24,7 +24,7 @@ int	count_coins(t_view *view)
 	return (i);
 }
 
-int	is_coins_taken(int position, t_view *view)
+int	is_coins_taken(int position, int next_tile, char *sprites, t_view *view)
 {
 	if (view->map->map[position] == 'C' && view->map->coin->count > 0)
 	{
@@ -32,18 +32,18 @@ int	is_coins_taken(int position, t_view *view)
 		view->map->coin->count -= 1;
 	}
 	if (view->map->coin->count == 0)
-		open_door(view);
+		open_door(view, next_tile, sprites);
 	return (1);
 }
 
-int	open_door(t_view *view)
+int	open_door(t_view *view, int next_tile, char *sprites)
 {
-	ft_putendl_fd("", 1);
-	ft_putendl_fd(view->map->map, 1);
-	ft_putchar_fd(view->map->map[view->player->pos->z], 1);
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'E');
 	set_static_items(view, "./img/xpm/exit/E.1.xpm", 'E');
-	if (view->map->map[view->player->pos->z] == 'E' && view->map->coin->count > 0)
+	init_tile("./img/xpm/tiles/1.1.xpm",
+		view->player->pos->x, view->player->pos->y, view);
+	init_tile(sprites, view->player->pos->x, view->player->pos->y, view);
+	if (next_tile == 'E' && view->map->coin->count == 0)
 		mlx_clear_window(view->mlx, view->win);
 	return (1);
 }
