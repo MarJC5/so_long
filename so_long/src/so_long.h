@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 00:46:47 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 07:50:10 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,9 @@ int		idle_player(t_view *view, int x, int y);
 * Utils
 */
 
-int		is_coins_taken(int key, int position, t_view *view);
+int		is_coins_taken(int position, t_view *view);
 int		count_coins(t_view *view);
-int		open_door(t_view *view, int key);
+int		open_door(t_view *view);
 int		ft_strchr_pos(const char *str, int c);
 
 /*

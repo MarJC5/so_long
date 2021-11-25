@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 01:07:25 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 07:57:21 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	count_coins(t_view *view)
 	return (i);
 }
 
-int	is_coins_taken(int key, int position, t_view *view)
+int	is_coins_taken(int position, t_view *view)
 {
 	if (view->map->map[position] == 'C' && view->map->coin->count > 0)
 	{
@@ -32,14 +32,18 @@ int	is_coins_taken(int key, int position, t_view *view)
 		view->map->coin->count -= 1;
 	}
 	if (view->map->coin->count == 0)
-		open_door(view, key);
+		open_door(view);
 	return (1);
 }
 
-int	open_door(t_view *view, int key)
+int	open_door(t_view *view)
 {
-	(void) key;
+	ft_putendl_fd("", 1);
+	ft_putendl_fd(view->map->map, 1);
+	ft_putchar_fd(view->map->map[view->player->pos->z], 1);
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'E');
 	set_static_items(view, "./img/xpm/exit/E.1.xpm", 'E');
+	if (view->map->map[view->player->pos->z] == 'E' && view->map->coin->count > 0)
+		mlx_clear_window(view->mlx, view->win);
 	return (1);
 }
