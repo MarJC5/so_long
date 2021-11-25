@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 13:09:34 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 14:29:23 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_player {
 	char	*idle;
 	char	*walk_r;
 	char	*walk_l;
+	int		steps;
+	int		coins;
 	t_pos	*pos;
 }				t_player;
 
@@ -89,10 +91,10 @@ typedef struct s_view {
 */
 
 int		render_next_key_event(t_view *view);
-int		key_right_event(int swap_pos, t_view *view);
-int		key_left_event(int swap_pos, t_view *view);
-int		key_up_event(int swap_pos, t_view *view);
-int		key_down_event(int swap_pos, t_view *view);
+int		key_right_event(t_view *view);
+int		key_left_event(t_view *view);
+int		key_up_event(t_view *view);
+int		key_down_event(t_view *view);
 int		key_esc_win(int key, t_view *view);
 int		init_tile(char *tile, int x, int y, t_view *view);
 int		init_win(int size_x, int size_y, char **map);

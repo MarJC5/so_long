@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 13:13:15 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 14:30:09 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	is_coins_taken(int position, t_view *view)
 {
 	if (view->map->map[position] == 'C' && view->map->coin->count > 0)
 	{
+		view->player->coins += 1;
 		view->map->coin->count -= 1;
 	}
 	if (view->map->coin->count == 0)
@@ -55,5 +56,5 @@ int	exit_door(t_view *view, int next_tile)
 		mlx_clear_window(view->mlx, view->win);
 		esc_win(view);
 	}
-	return (0);
+	return (1);
 }

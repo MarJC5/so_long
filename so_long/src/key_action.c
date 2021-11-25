@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:15 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 13:14:33 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 14:29:54 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	esc_win(t_view *view)
 	return (1);
 }
 
-int	key_right_event(int swap_pos, t_view *view)
+int	key_right_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -32,6 +32,7 @@ int	key_right_event(int swap_pos, t_view *view)
 	if (next_tile != '1' && next_tile != 'E')
 	{
 		is_coins_taken(next_pos, view);
+		view->player->steps += 1;
 		view->map->map[prev_pos] = '0';
 		view->map->map[next_pos] = 'P';
 		view->player->pos->x += TILE_SIZE;
@@ -39,10 +40,10 @@ int	key_right_event(int swap_pos, t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-right/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (swap_pos);
+	return (next_pos);
 }
 
-int	key_left_event(int swap_pos, t_view *view)
+int	key_left_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -55,6 +56,7 @@ int	key_left_event(int swap_pos, t_view *view)
 	if (next_tile != '1' && next_tile != 'E')
 	{
 		is_coins_taken(next_pos, view);
+		view->player->steps += 1;
 		view->map->map[prev_pos] = '0';
 		view->map->map[next_pos] = 'P';
 		view->player->pos->x -= TILE_SIZE;
@@ -62,10 +64,10 @@ int	key_left_event(int swap_pos, t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-left/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (swap_pos);
+	return (next_pos);
 }
 
-int	key_up_event(int swap_pos, t_view *view)
+int	key_up_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -78,6 +80,7 @@ int	key_up_event(int swap_pos, t_view *view)
 	if (next_tile != '1' && next_tile != 'E')
 	{
 		is_coins_taken(next_pos, view);
+		view->player->steps += 1;
 		view->map->map[prev_pos] = '0';
 		view->map->map[next_pos] = 'P';
 		view->player->pos->y -= TILE_SIZE;
@@ -85,10 +88,10 @@ int	key_up_event(int swap_pos, t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-left/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (swap_pos);
+	return (next_pos);
 }
 
-int	key_down_event(int swap_pos, t_view *view)
+int	key_down_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -101,6 +104,7 @@ int	key_down_event(int swap_pos, t_view *view)
 	if (next_tile != '1' && next_tile != 'E')
 	{
 		is_coins_taken(next_pos, view);
+		view->player->steps += 1;
 		view->map->map[prev_pos] = '0';
 		view->map->map[next_pos] = 'P';
 		view->player->pos->y += TILE_SIZE;
@@ -108,5 +112,5 @@ int	key_down_event(int swap_pos, t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-right/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (swap_pos);
+	return (next_pos);
 }

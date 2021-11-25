@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 09:25:37 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/25 14:29:47 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	init_struct(t_view *view)
 	view->map->coin = malloc(sizeof(t_coin));
 	view->player = malloc(sizeof(t_player));
 	view->player->pos = malloc(sizeof(t_pos));
+	view->player->steps = 0;
+	view->player->coins = 0;
 	return (1);
 }
 
