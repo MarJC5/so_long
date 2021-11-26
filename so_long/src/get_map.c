@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 09:18:47 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 11:05:13 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 static int	check_map_validity(char **result)
 {
 	if (!ft_strchr(*result, 'E'))
-		ft_putendl_fd("The map doesn't have a valid exit (E).", 2);
+		ft_putendl_fd("Error\nThe map doesn't have a valid exit (E).", 2);
 	else if (!ft_strchr(*result, 'P'))
-		ft_putendl_fd("The map doesn't have a valid player position (P).", 2);
+		ft_putendl_fd("Error\nThe map doesn't have a valid player position (P).",
+			2);
 	else if (!ft_strchr(*result, 'C'))
-		ft_putendl_fd("The map doesn't have a collectible (C).", 2);
+		ft_putendl_fd("Error\nThe map doesn't have a collectible (C).", 2);
 	else if (!ft_strchr(*result, '1'))
-		ft_putendl_fd("The map doesn't have walls (1).", 2);
+		ft_putendl_fd("Error\nThe map doesn't have walls (1).", 2);
 	else if (!ft_strchr(*result, '0'))
-		ft_putendl_fd("The map doesn't have ground (0).", 2);
+		ft_putendl_fd("Error\nThe map doesn't have ground (0).", 2);
 	else
 		return (1);
 	exit (0);
