@@ -6,17 +6,11 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:14:45 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 09:12:49 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:57:47 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	idle_player(t_view *view, int x, int y)
-{
-	init_tile("./img/xpm/tiles/1.1.xpm", x, y, view);
-	init_tile("./img/xpm/player/idle/P.0.0.xpm", x, y, view);
-}
 
 void	init_tile(char *path, int x, int y, t_view *view)
 {
@@ -41,9 +35,7 @@ void	set_static_items(t_view *view, char *tile, int c)
 	{
 		while ((view->map->map)[++i] && view->x > ++x)
 		{
-			if ((view->map->map)[i] == 'P')
-				idle_player(view, x * TILE_SIZE, y * TILE_SIZE);
-			else if ((view->map->map)[i] == c || c == 'G')
+			if ((view->map->map)[i] == c || c == 'G')
 				init_tile(tile, x * TILE_SIZE, y * TILE_SIZE, view);
 		}
 		x = -1;

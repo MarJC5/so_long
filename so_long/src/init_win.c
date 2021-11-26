@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 09:08:37 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:55:04 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_player_pos(t_view *view)
 {
-	set_static_items(view, "./img/xpm/player/walk-right/P.0.0.xpm", 'P');
+	set_static_items(view, "./img/xpm/player/idle/P.0.0.xpm", 'P');
 	set_player_pos(view);
 }
 
