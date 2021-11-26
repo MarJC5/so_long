@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 10:03:30 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 12:29:05 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	init_tile_map(t_view *view)
 	init_player_pos(view);
 	count_coins(view);
 	counter_event(view);
+	view->player->steps += 1;
 }
 
 static void	init_struct(t_view *view)
