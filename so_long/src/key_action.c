@@ -6,17 +6,11 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:15 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 09:17:13 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 13:44:17 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	esc_win(t_view *view)
-{
-	free(view);
-	exit(0);
-}
 
 void	key_right_event(t_view *view)
 {

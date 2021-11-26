@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 11:14:15 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:14:48 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	exit_door(t_view *view, int next_tile)
 	if (next_tile == 'E' && view->map->coin->count == 0)
 	{
 		mlx_clear_window(view->mlx, view->win);
-		ft_putendl_fd("Well done!", 2);
+		printf("\n\033[1;32mWell done!\033[0m\n\n");
 		esc_win(view);
 	}
 }

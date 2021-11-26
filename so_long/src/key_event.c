@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 09:16:07 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:40:01 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,21 @@ void	counter_event(t_view *view)
 	coins = ft_strjoin("Coins: ", ft_itoa(view->player->coins, 10));
 	steps = ft_strjoin(" - Steps: ", ft_itoa(view->player->steps, 10));
 	full = ft_strjoin(coins, steps);
-	ft_putstr_fd(coins, 1);
-	ft_putendl_fd(steps, 1);
+	ft_putendl_fd(full, 1);
 	init_tile("./img/xpm/panel/S.0.xpm",
 		(view->x / 2) * TILE_SIZE - 70, 5, view);
 	mlx_string_put(view->mlx, view->win,
 		(view->x / 2) * TILE_SIZE - 60, 20, 0x00000000, full);
-	free(coins);
-	free(steps);
-	free(full);
+	free_ptr(&coins);
+	free_ptr(&steps);
+	free_ptr(&full);
+}
+
+void	esc_win(t_view *view)
+{
+	if (view->map->coin->count > 0)
+		printf("\n\033[1;31mYou've quit the game!\033[0m\n\n");
+	exit(0);
 }
 
 int	key_event(int key, t_view *view)

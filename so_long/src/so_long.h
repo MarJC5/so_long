@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 10:06:10 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:22:42 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,10 @@ void	counter_event(t_view *view);
 void	count_coins(t_view *view);
 void	is_coins_taken(int position, t_view *view);
 void	set_player_pos(t_view *view);
+
+void	init_struct(t_view *view);
+void	free_ptr(char **ptr);
+void	free_view_struct(t_view *view);
 int		ft_strchr_pos(const char *str, int c);
 
 /*

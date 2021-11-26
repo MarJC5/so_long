@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 11:05:13 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 14:19:04 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,18 @@
 static int	check_map_validity(char **result)
 {
 	if (!ft_strchr(*result, 'E'))
-		ft_putendl_fd("Error\nThe map doesn't have a valid exit (E).", 2);
+		printf("Error\nThe map doesn't have a valid exit (E).\n");
 	else if (!ft_strchr(*result, 'P'))
-		ft_putendl_fd("Error\nThe map doesn't have a valid player position (P).",
-			2);
+		printf("Error\nThe map doesn't have a valid player position (P).\n");
 	else if (!ft_strchr(*result, 'C'))
-		ft_putendl_fd("Error\nThe map doesn't have a collectible (C).", 2);
+		printf("Error\nThe map doesn't have a collectible (C).\n");
 	else if (!ft_strchr(*result, '1'))
-		ft_putendl_fd("Error\nThe map doesn't have walls (1).", 2);
+		printf("Error\nThe map doesn't have walls (1).\n");
 	else if (!ft_strchr(*result, '0'))
-		ft_putendl_fd("Error\nThe map doesn't have ground (0).", 2);
+		printf("Error\nThe map doesn't have ground (0).\n");
 	else
 		return (1);
-	exit (0);
+	exit(0);
 	return (0);
 }
 
@@ -55,7 +54,7 @@ void	process_map_file(int fd, char **save)
 	width = 0;
 	height = 0;
 	if (fd == -1)
-		ft_putendl_fd("Cannot open the file.", 2);
+		printf("Error\nCannot open the file.\n");
 	else
 	{
 		result = get_next_line(fd);

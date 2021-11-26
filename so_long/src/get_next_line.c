@@ -6,20 +6,11 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 11:25:47 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/21 23:32:23 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 13:52:53 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	free_ptr(char **ptr)
-{
-	if (*ptr != NULL)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
-}
 
 static char	*ft_return_line(char **save, char *res)
 {
