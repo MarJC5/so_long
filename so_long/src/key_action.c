@@ -6,20 +6,19 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:15 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 14:29:54 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:17:13 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	esc_win(t_view *view)
+void	esc_win(t_view *view)
 {
 	free(view);
 	exit(0);
-	return (1);
 }
 
-int	key_right_event(t_view *view)
+void	key_right_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -40,10 +39,9 @@ int	key_right_event(t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-right/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (next_pos);
 }
 
-int	key_left_event(t_view *view)
+void	key_left_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -64,10 +62,9 @@ int	key_left_event(t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-left/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (next_pos);
 }
 
-int	key_up_event(t_view *view)
+void	key_up_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -88,10 +85,9 @@ int	key_up_event(t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-left/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (next_pos);
 }
 
-int	key_down_event(t_view *view)
+void	key_down_event(t_view *view)
 {
 	int	prev_pos;
 	int	next_pos;
@@ -112,5 +108,4 @@ int	key_down_event(t_view *view)
 	}
 	init_tile("./img/xpm/player/walk-right/P.1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	return (next_pos);
 }

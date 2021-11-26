@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 16:26:21 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:21:51 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,47 +98,39 @@ typedef struct s_view {
 * Key events
 */
 
-int		render_next_key_event(t_view *view);
-int		key_right_event(t_view *view);
-int		key_left_event(t_view *view);
-int		key_up_event(t_view *view);
-int		key_down_event(t_view *view);
+void	esc_win(t_view *view);
+void	key_right_event(t_view *view);
+void	key_left_event(t_view *view);
+void	key_up_event(t_view *view);
+void	key_down_event(t_view *view);
 int		key_esc_win(int key, t_view *view);
-int		init_tile(char *tile, int x, int y, t_view *view);
-int		init_win(int size_x, int size_y, char **map);
+int		render_next_key_event(t_view *view);
 
 /*
 * Tile
 */
 
-int		set_static_items(t_view *view, char *tile, int c);
-int		set_player_pos(t_view *view);
+void	init_tile(char *tile, int x, int y, t_view *view);
+void	set_static_items(t_view *view, char *tile, int c);
 
 /*
 * Map
 */
 
-int		check_map_name(char *str);
-int		process_map_file(int fd, char **save);
+void	process_map_file(int fd, char **save);
+void	open_door(t_view *view);
+void	exit_door(t_view *view, int next_tile);
 char	*get_next_line(int fd);
-
-/*
-* Player
-*/
-
-int		move_player(t_view *view, char *sprites);
-int		idle_player(t_view *view, int x, int y);
+int		check_map_name(char *str);
 
 /*
 * Utils
 */
 
-int		counter_event(t_view *view);
-int		esc_win(t_view *view);
-int		open_door(t_view *view);
-int		count_coins(t_view *view);
-int		exit_door(t_view *view, int next_tile);
-int		is_coins_taken(int position, t_view *view);
+void	counter_event(t_view *view);
+void	count_coins(t_view *view);
+void	is_coins_taken(int position, t_view *view);
+void	set_player_pos(t_view *view);
 int		ft_strchr_pos(const char *str, int c);
 
 /*
@@ -146,5 +138,6 @@ int		ft_strchr_pos(const char *str, int c);
 */
 
 void	so_long(char *map);
+int		init_win(int size_x, int size_y, char **map);
 
 #endif

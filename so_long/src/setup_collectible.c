@@ -6,13 +6,13 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 14:30:09 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:15:01 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_coins(t_view *view)
+void	count_coins(t_view *view)
 {
 	int	i;
 
@@ -21,10 +21,9 @@ int	count_coins(t_view *view)
 	while ((view->map->map)[++i])
 		if (view->map->map[i] == 'C')
 			view->map->coin->count += 1;
-	return (i);
 }
 
-int	is_coins_taken(int position, t_view *view)
+void	is_coins_taken(int position, t_view *view)
 {
 	if (view->map->map[position] == 'C' && view->map->coin->count > 0)
 	{
@@ -33,10 +32,9 @@ int	is_coins_taken(int position, t_view *view)
 	}
 	if (view->map->coin->count == 0)
 		open_door(view);
-	return (1);
 }
 
-int	open_door(t_view *view)
+void	open_door(t_view *view)
 {
 	int	pos_x;
 	int	pos_y;
@@ -46,15 +44,13 @@ int	open_door(t_view *view)
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'E');
 	set_static_items(view, "./img/xpm/exit/E.1.xpm", 'E');
 	init_tile("./img/xpm/tiles/1.1.xpm", pos_x, pos_y, view);
-	return (1);
 }
 
-int	exit_door(t_view *view, int next_tile)
+void	exit_door(t_view *view, int next_tile)
 {
 	if (next_tile == 'E' && view->map->coin->count == 0)
 	{
 		mlx_clear_window(view->mlx, view->win);
 		esc_win(view);
 	}
-	return (1);
 }

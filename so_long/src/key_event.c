@@ -6,13 +6,13 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 23:17:15 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:16:07 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	counter_event(t_view *view)
+void	counter_event(t_view *view)
 {
 	char	*coins;
 	char	*steps;
@@ -30,7 +30,6 @@ int	counter_event(t_view *view)
 	free(coins);
 	free(steps);
 	free(full);
-	return (1);
 }
 
 int	key_event(int key, t_view *view)
@@ -54,5 +53,5 @@ int	key_event(int key, t_view *view)
 int	render_next_key_event(t_view *view)
 {
 	mlx_hook(view->win, 2, 1L << 0, key_event, view);
-	return (1);
+	return (0);
 }

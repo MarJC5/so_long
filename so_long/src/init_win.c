@@ -6,26 +6,19 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/25 16:23:47 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:08:37 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	init_player_idle(t_view *view)
+static void	init_player_pos(t_view *view)
 {
-	set_static_items(view, "./img/xpm/player/walk-right/P.1.0.xpm", 'P');
-	return (1);
-}
-
-int	init_player_pos(t_view *view)
-{
-	mlx_loop_hook(view->mlx, init_player_idle, view);
+	set_static_items(view, "./img/xpm/player/walk-right/P.0.0.xpm", 'P');
 	set_player_pos(view);
-	return (1);
 }
 
-int	init_tile_map(t_view *view)
+static void	init_tile_map(t_view *view)
 {
 	ft_putendl_fd(view->map->map, 1);
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'G');
@@ -35,10 +28,9 @@ int	init_tile_map(t_view *view)
 	init_player_pos(view);
 	count_coins(view);
 	counter_event(view);
-	return (1);
 }
 
-int	init_struct(t_view *view)
+static void	init_struct(t_view *view)
 {
 	view->map = malloc(sizeof(t_map));
 	view->map->coin = malloc(sizeof(t_coin));
@@ -46,7 +38,6 @@ int	init_struct(t_view *view)
 	view->player->pos = malloc(sizeof(t_pos));
 	view->player->steps = 0;
 	view->player->coins = 0;
-	return (1);
 }
 
 int	init_win(int size_x, int size_y, char **map)
@@ -66,5 +57,5 @@ int	init_win(int size_x, int size_y, char **map)
 	init_tile_map(view);
 	mlx_loop_hook(view->mlx, render_next_key_event, view);
 	mlx_loop(view->mlx);
-	return (1);
+	return (0);
 }

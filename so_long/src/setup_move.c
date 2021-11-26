@@ -6,13 +6,13 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 00:35:22 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/24 17:30:32 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/26 09:09:02 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	set_player_pos(t_view *view)
+void	set_player_pos(t_view *view)
 {
 	int	i;
 	int	x;
@@ -34,5 +34,4 @@ int	set_player_pos(t_view *view)
 		}
 		x = -1;
 	}
-	return (1);
 }
