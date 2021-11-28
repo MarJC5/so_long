@@ -25,6 +25,7 @@ FILES 	=	main.c \
 			setup_collectible.c \
 			setup_img.c \
 			setup_move.c \
+			setup_monster.c \
 			utils.c
 SOURCES = $(addprefix $(FOLDER), $(FILES))
 OBJ		= $(SOURCES:.c=.o)

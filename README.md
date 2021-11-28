@@ -18,6 +18,15 @@ of basic algorithms, information research etc.
 As a graphic design project, so long will enable improve skills in these
 areas: windows, colors, events, textures, etc.
 
+## Run the program
+
+```shell
+git clone https://github.com/MarJC5/so_long.git
+cd ./so_long/so_long #Move to the game folder
+make #Compile all the stuff
+./so_long <./path_to/map_name.ber> #Run the game
+```
+
 ## Mandatory part
 
 - The map will be constructed with 3 components walls, collectibles, and free space.

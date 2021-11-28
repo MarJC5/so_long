@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 19:21:36 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:20:54 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	init_tile_map(t_view *view)
 	set_static_items(view, "./img/xpm/tiles/1.0.xpm", '1');
 	set_static_items(view, "./img/xpm/exit/E.0.xpm", 'E');
 	set_static_items(view, "./img/xpm/coin/C.0.xpm", 'C');
+	init_monster_pos(view);
 	init_player_pos(view);
 	count_coins(view);
 	printf("\n\033[1;34mPlayer stats:\033[0m\n\n");

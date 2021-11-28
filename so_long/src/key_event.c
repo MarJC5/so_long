@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 14:40:01 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/28 16:15:38 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ void	counter_event(t_view *view)
 	free_ptr(&full);
 }
 
-void	esc_win(t_view *view)
+int	esc_win(t_view *view)
 {
 	if (view->map->coin->count > 0)
 		printf("\n\033[1;31mYou've quit the game!\033[0m\n\n");
 	exit(0);
+	return (0);
 }
 
 int	key_event(int key, t_view *view)
@@ -58,6 +59,7 @@ int	key_event(int key, t_view *view)
 
 int	render_next_key_event(t_view *view)
 {
+	mlx_hook(view->win, 17, 0L << 0, esc_win, view);
 	mlx_hook(view->win, 2, 1L << 0, key_event, view);
 	return (0);
 }

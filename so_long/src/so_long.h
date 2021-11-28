@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 14:22:42 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:21:00 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ typedef struct s_view {
 * Key events
 */
 
-void	esc_win(t_view *view);
 void	key_right_event(t_view *view);
 void	key_left_event(t_view *view);
 void	key_up_event(t_view *view);
 void	key_down_event(t_view *view);
 int		key_esc_win(int key, t_view *view);
 int		render_next_key_event(t_view *view);
+int		esc_win(t_view *view);
 
 /*
 * Tile
@@ -109,6 +109,7 @@ void	set_static_items(t_view *view, char *tile, int c);
 * Map
 */
 
+void	init_monster_pos(t_view *view);
 void	process_map_file(int fd, char **save);
 void	open_door(t_view *view);
 void	exit_door(t_view *view, int next_tile);
