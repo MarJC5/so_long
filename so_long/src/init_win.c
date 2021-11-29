@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 15:37:55 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/30 00:18:05 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	init_win(int size_x, int size_y, char **map)
 	view->mlx = mlx_init();
 	view->win = mlx_new_window(view->mlx,
 			view->x * TILE_SIZE, view->y * TILE_SIZE, "Indiana Jean");
+	theme_sound();
 	init_tile_map(view);
 	mlx_loop_hook(view->mlx, render_next_key_event, view);
 	mlx_loop(view->mlx);

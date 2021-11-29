@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 14:14:48 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/30 00:20:22 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	is_coins_taken(int position, t_view *view)
 	{
 		view->player->coins += 1;
 		view->map->coin->count -= 1;
+		coins_sound();
 	}
 	if (view->map->coin->count == 0)
 		open_door(view);

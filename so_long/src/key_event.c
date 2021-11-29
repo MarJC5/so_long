@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 23:04:59 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/30 00:14:07 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	counter_event(t_view *view)
 
 int	esc_win(t_view *view)
 {
+	const char	*command;
+
+	command = "killall afplay";
+	system(command);
 	if (view->map->coin->count > 0 && ft_strchr(view->map->map, 'P'))
 		printf("\n\033[1mYou've quit the game!\033[0m\n\n");
 	exit(0);

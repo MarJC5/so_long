@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 17:23:04 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/30 00:16:35 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,16 @@ void	init_struct(t_view *view);
 void	free_ptr(char **ptr);
 void	free_view_struct(t_view *view);
 int		ft_strchr_pos(const char *str, int c);
+
+/*
+* Audio
+*/
+
+void	theme_sound(void);
+void	door_sound(void);
+void	miss_shot_sound(void);
+void	shot_sound(void);
+void	coins_sound(void);
 
 /*
 * Game

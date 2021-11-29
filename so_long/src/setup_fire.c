@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 14:58:05 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 16:15:40 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/30 00:05:36 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	key_fire_event(t_view *view)
 		kill_monster_pos(view);
 	}
 	else
+	{
 		init_tile("./img/xpm/player/combat/F.2.xpm",
 			view->player->pos->x, view->player->pos->y, view);
+		miss_shot_sound();
+	}
 }

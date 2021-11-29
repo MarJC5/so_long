@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:36:42 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 17:23:07 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/30 00:05:48 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	kill_monster_pos(t_view *view)
 	set_monster_pos(view);
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'M');
 	map[view->monster->pos->z] = '0';
+	shot_sound();
 }
 
 void	monster_cases(t_view *view, char *map, int monster_pos)

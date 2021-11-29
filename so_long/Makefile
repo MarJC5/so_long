@@ -25,6 +25,7 @@ FILES 	=	main.c \
 			get_next_line.c \
 			setup_collectible.c \
 			setup_fire.c \
+			setup_audio.c \
 			setup_img.c \
 			setup_move.c \
 			setup_monster.c \
