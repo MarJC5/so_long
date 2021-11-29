@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 14:50:51 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:23:04 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_F 3
 # define KEY_TOP 126
 # define KEY_RIGHT 124
 # define KEY_DOWN 125
@@ -55,17 +56,12 @@ typedef struct s_pos {
 }				t_pos;
 
 typedef struct s_player {
-	char	*idle;
-	char	*walk_r;
-	char	*walk_l;
 	int		steps;
 	int		coins;
 	t_pos	*pos;
 }				t_player;
 
 typedef struct s_monster{
-	char	*walk_r;
-	char	*walk_l;
 	t_pos	*pos;
 }				t_monster;
 
@@ -76,10 +72,6 @@ typedef struct s_coin {
 
 typedef struct s_map {
 	char		*map;
-	char		*wall;
-	char		*ground;
-	char		*exit_open;
-	char		*exit_close;
 	t_coin		*coin;
 }				t_map;
 
@@ -101,6 +93,7 @@ void	key_right_event(t_view *view);
 void	key_left_event(t_view *view);
 void	key_up_event(t_view *view);
 void	key_down_event(t_view *view);
+void	key_fire_event(t_view *view);
 int		key_esc_win(int key, t_view *view);
 int		render_next_key_event(t_view *view);
 int		esc_win(t_view *view);
@@ -121,13 +114,14 @@ void	exit_door(t_view *view, int next_tile);
 char	*get_next_line(int fd);
 int		check_map_name(char *str);
 
-void	init_monster_move(t_view *view);
+void	monster_cases(t_view *view, char *map, int monster_pos);
 void	init_monster_pos(t_view *view);
 void	set_monster_pos(t_view *view);
 void	move_monster_right(t_view *view);
 void	move_monster_left(t_view *view);
 void	move_monster_up(t_view *view);
 void	move_monster_down(t_view *view);
+void	kill_monster_pos(t_view *view);
 
 void	set_player_pos(t_view *view);
 

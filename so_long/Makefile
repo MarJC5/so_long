@@ -24,6 +24,7 @@ FILES 	=	main.c \
 			get_map.c \
 			get_next_line.c \
 			setup_collectible.c \
+			setup_fire.c \
 			setup_img.c \
 			setup_move.c \
 			setup_monster.c \

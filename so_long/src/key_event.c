@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 11:42:36 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:18:17 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	counter_event(t_view *view)
 int	esc_win(t_view *view)
 {
 	if (view->map->coin->count > 0 && ft_strchr(view->map->map, 'P'))
-		printf("\n\033[1;31mYou've quit the game!\033[0m\n\n");
+		printf("\n\033[1mYou've quit the game!\033[0m\n\n");
 	exit(0);
 	return (0);
 }
@@ -46,7 +46,8 @@ int	key_event(int key, t_view *view)
 		view->monster->pos->x, view->monster->pos->y, view);
 	init_tile("./img/xpm/tiles/1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
-	init_monster_move(view);
+	if (ft_strchr(view->map->map, 'M'))
+		monster_cases(view, view->map->map, view->monster->pos->z);
 	if (key == KEY_ESC)
 		esc_win(view);
 	else if (key == KEY_W || key == KEY_TOP)
@@ -57,6 +58,8 @@ int	key_event(int key, t_view *view)
 		key_down_event(view);
 	else if (key == KEY_D || key == KEY_RIGHT)
 		key_right_event(view);
+	else if (key == KEY_F)
+		key_fire_event(view);
 	return (key);
 }
 

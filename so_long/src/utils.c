@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:46:35 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 14:50:00 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 16:45:27 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	init_struct(t_view *view)
 	view->player->pos = malloc(sizeof(t_pos));
 	view->monster = malloc(sizeof(t_monster));
 	view->monster->pos = malloc(sizeof(t_monster));
+	view->monster->pos->z = 0;
 	view->player->steps = 0;
 	view->player->coins = 0;
 }
