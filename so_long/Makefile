@@ -20,6 +20,7 @@ FILES 	=	main.c \
 			init_win.c \
 			key_action.c \
 			key_event.c \
+			monster_event.c \
 			get_map.c \
 			get_next_line.c \
 			setup_collectible.c \

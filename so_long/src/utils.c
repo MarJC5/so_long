@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:46:35 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 07:21:01 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 14:50:00 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strchr_pos(const char *str, int c)
 	size_t	i;
 
 	i = 0;
-	while (i < ft_strlen(str) + 1)
+	while (i < ft_strlen(str))
 	{
 		if (str[i] == (char)c)
 			return (i);

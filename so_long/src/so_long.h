@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 07:29:42 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 14:50:51 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,12 @@ int		check_map_name(char *str);
 void	init_monster_move(t_view *view);
 void	init_monster_pos(t_view *view);
 void	set_monster_pos(t_view *view);
+void	move_monster_right(t_view *view);
+void	move_monster_left(t_view *view);
+void	move_monster_up(t_view *view);
+void	move_monster_down(t_view *view);
+
+void	set_player_pos(t_view *view);
 
 /*
 * Utils
@@ -132,7 +138,6 @@ void	set_monster_pos(t_view *view);
 void	counter_event(t_view *view);
 void	count_coins(t_view *view);
 void	is_coins_taken(int position, t_view *view);
-void	set_player_pos(t_view *view);
 
 void	init_struct(t_view *view);
 void	free_ptr(char **ptr);
