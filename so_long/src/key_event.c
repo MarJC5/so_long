@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/28 16:15:38 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 07:42:50 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int	key_event(int key, t_view *view)
 {
 	counter_event(view);
 	init_tile("./img/xpm/tiles/1.1.xpm",
+		view->monster->pos->x, view->monster->pos->y, view);
+	init_tile("./img/xpm/tiles/1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
+	init_monster_move(view);
 	if (key == KEY_ESC)
 		esc_win(view);
 	else if (key == KEY_W || key == KEY_TOP)

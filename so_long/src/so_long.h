@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/28 17:21:00 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 07:29:42 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ typedef struct s_player {
 	t_pos	*pos;
 }				t_player;
 
+typedef struct s_monster{
+	char	*walk_r;
+	char	*walk_l;
+	t_pos	*pos;
+}				t_monster;
+
 typedef struct s_coin {
 	char		*img;
 	int			count;
@@ -84,6 +90,7 @@ typedef struct s_view {
 	int			y;
 	t_map		*map;
 	t_player	*player;
+	t_monster	*monster;
 }				t_view;
 
 /*
@@ -108,13 +115,15 @@ void	set_static_items(t_view *view, char *tile, int c);
 /*
 * Map
 */
-
-void	init_monster_pos(t_view *view);
 void	process_map_file(int fd, char **save);
 void	open_door(t_view *view);
 void	exit_door(t_view *view, int next_tile);
 char	*get_next_line(int fd);
 int		check_map_name(char *str);
+
+void	init_monster_move(t_view *view);
+void	init_monster_pos(t_view *view);
+void	set_monster_pos(t_view *view);
 
 /*
 * Utils
