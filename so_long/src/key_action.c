@@ -6,13 +6,13 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:15 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 17:15:56 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:24:22 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void is_monster(t_view *view, int next_tile)
+static void	is_monster(t_view *view, int next_tile)
 {
 	if (next_tile == 'M')
 	{
