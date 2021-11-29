@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/26 14:19:04 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/11/29 23:07:34 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void	process_map_file(int fd, char **save)
 		}
 		check_map_validity(save);
 		init_win(width, height, save);
+		free_ptr(save);
 	}
 }
