@@ -54,7 +54,7 @@ fclean: clean
 	@echo "[$(RED)deleted$(RESET)]: $(NAME), libmlx.a and libft.a"
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt -s ./$(RUN) ./map/small.ber
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt -s ./$(RUN) ./map/mandatory/small.ber
 
 re: fclean all
 

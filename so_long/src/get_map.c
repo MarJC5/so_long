@@ -6,14 +6,50 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/29 23:07:34 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/01 00:05:54 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static void	check_map_shape(int width, char *line, char **save)
+{
+	int	last;
+
+	last = (int)ft_strlen(line) - 1;
+	if (line[last] != '\n')
+		last += 1;
+	if (width != last)
+	{
+		printf("Error\nThe map isn't rectangular.\n");
+		free_ptr(save);
+		exit(0);
+	}
+}
+
+static int	check_map_char(char **result)
+{
+	int	i;
+
+	i = -1;
+	while ((*result)[++i])
+	{
+		if ((*result)[i] != 'E' && (*result)[i] != 'P' &&
+			(*result)[i] != 'C' && (*result)[i] != '1' &&
+			(*result)[i] != '0' && (*result)[i] != '\n' &&
+			(*result)[i] != 'M')
+			return (0);
+	}
+	return (1);
+}
+
 static int	check_map_validity(char **result)
 {
+	if (!check_map_char(result))
+	{
+		printf("Error\nThe map content isn't valid, must be (E,P,C,1,0).\n");
+		return (0);
+	}
 	if (!ft_strchr(*result, 'E'))
 		printf("Error\nThe map doesn't have a valid exit (E).\n");
 	else if (!ft_strchr(*result, 'P'))
@@ -26,7 +62,6 @@ static int	check_map_validity(char **result)
 		printf("Error\nThe map doesn't have ground (0).\n");
 	else
 		return (1);
-	exit(0);
 	return (0);
 }
 
@@ -47,9 +82,9 @@ int	check_map_name(char *str)
 
 void	process_map_file(int fd, char **save)
 {
-	int			height;
-	int			width;
-	char		*result;
+	int		height;
+	int		width;
+	char	*result;
 
 	width = 0;
 	height = 0;
@@ -61,12 +96,13 @@ void	process_map_file(int fd, char **save)
 		width = ft_strchr_pos(result, '\n');
 		while (result != NULL)
 		{
-			*save = ft_strjoin(*save, result);
-			result = get_next_line(fd);
 			height++;
+			*save = ft_strjoin(*save, result);
+			check_map_shape(width, result, save);
+			result = get_next_line(fd);
 		}
-		check_map_validity(save);
-		init_win(width, height, save);
+		if (check_map_validity(save))
+			init_win(width, height, save);
 		free_ptr(save);
 	}
 }
