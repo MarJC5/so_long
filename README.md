@@ -37,8 +37,8 @@ make #Compile all the stuff
 - The game doesn’t need to be real-time.
 - player cannot move into walls.
 - The program displays the image in a window and respects the following rules:
-  - The W, A, S, and D keys will be used to move the main character.
-  - Pressing ESC must close the window and quit the program cleanly.
+  - The `W`, `A`, `S`, and `D` keys will be used to move the main character.
+  - Pressing `ESC` must close the window and quit the program cleanly.
   - Clicking on the red cross on the window’s frame must close the window and quit the program cleanly.
 
 ## Map
@@ -56,8 +56,9 @@ This is a simple valid map:
 ```
 
 ## Bonus part
-
+- There’s some enemy animation.
 - There’s some sprite animation.
+- The player can kill enemy by pressing `P`.
 - Movement count is directly displayed on the screen instead of shell output.
 
 <p align="center">
