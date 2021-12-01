@@ -23,8 +23,7 @@ areas: windows, colors, events, textures, etc.
 ```shell
 git clone https://github.com/MarJC5/so_long.git
 cd ./so_long/so_long #Move to the game folder
-make #Compile all the stuff
-./so_long <./path_to/map_name.ber> #Run the game
+make && ./so_long ./map/bonus/small.ber  #Compile and Run the game
 ```
 
 ## Mandatory part
