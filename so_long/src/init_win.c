@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:29:30 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/30 00:18:05 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/01 09:40:46 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init_player_pos(t_view *view)
 
 static void	init_tile_map(t_view *view)
 {
-	printf("\n\033[1;33mCurrent map:\033[0m\n\n%s\n",
+	printf("\n\033[1;36mCurrent map:\033[0m\n\n%s\n",
 		view->map->map);
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'G');
 	set_static_items(view, "./img/xpm/tiles/1.0.xpm", '1');
