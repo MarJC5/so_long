@@ -23,6 +23,7 @@ FILES 	=	main.c \
 			monster_event.c \
 			get_map.c \
 			get_next_line.c \
+			check_map.c \
 			setup_collectible.c \
 			setup_fire.c \
 			setup_audio.c \

@@ -6,13 +6,27 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:46:35 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/30 15:43:22 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/01 08:07:01 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 int	ft_strchr_pos(const char *str, int c)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < ft_strlen(str))
+	{
+		if (str[i] == (char)c)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_strrchr_pos(const char *str, int c)
 {
 	size_t	i;
 
