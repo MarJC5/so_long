@@ -42,6 +42,8 @@ $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OPTIONS) -o $(RUN) $(OBJ) $(LIB)
 	@echo "[$(GREEN)created$(RESET)]: Run the program with \033[1m$(RUN) 'map name'$(RESET)"
 
+bonus:	all
+
 clean :
 	@$(RM) $(OBJ)
 	@$(RM) $(RUN)
