@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 10:43:11 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/01 08:09:41 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/01 09:25:33 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ void	process_map_file(int fd, char **save)
 			check_map_shape(width, result, save);
 			result = get_next_line(fd);
 		}
-		if (check_map_validity(save) &&
-			check_map_walls(ft_strchr(*save, '1'),
-				*save, width))
+		if (check_map_validity(save) && check_map_walls(save, width))
 			init_win(width, height, save);
 	}
 	free_ptr(save);

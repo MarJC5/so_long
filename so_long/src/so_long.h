@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:25:17 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/01 08:07:51 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/01 09:07:07 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	kill_monster_pos(t_view *view);
 void	set_player_pos(t_view *view);
 
 void	check_map_shape(int width, char *line, char **save);
-int		check_map_walls(char *top, int bottom, int width);
+int		check_map_walls(char **map, int width);
 void	check_map_walls_border(char **map, char *line, int width);
 
 /*
@@ -141,7 +141,6 @@ void	init_struct(t_view *view);
 void	free_ptr(char **ptr);
 void	free_view_struct(t_view *view);
 int		ft_strchr_pos(const char *str, int c);
-int		ft_strrchr_pos(const char *str, int c);
 
 /*
 * Audio
