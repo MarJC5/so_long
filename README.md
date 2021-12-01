@@ -6,9 +6,12 @@
     </h4>
 </h1>
 
-<p align="center">
-  <img src="./doc/img/screen-1.png" alt="so_long indiana jean"/>
-</p>
+<a href="sprites: https://elthen.itch.io/">
+  <p align="center">
+    <img src="./doc/img/screen-1.png" alt="sprites: https://elthen.itch.io/ - @pixelthen"/>
+  </p`>
+  <p align="center">sprites: https://elthen.itch.io/ - @pixelthen</p>
+</a>
 
 ## Goals
 
@@ -55,11 +58,14 @@ This is a simple valid map:
 ```
 
 ## Bonus part
-- There’s some enemy animation.
+- There’s some enemy animation (add `M` characters to map).
 - There’s some sprite animation.
 - The player can kill enemy by pressing `P`.
 - Movement count is directly displayed on the screen instead of shell output.
 
-<p align="center">
-  <img src="./doc/img/screen-2.png" alt="so_long indiana jean - bonus"/>
-</p>
+<a href="sprites: https://elthen.itch.io/">
+  <p align="center">
+    <img src="./doc/img/screen-2.gif" alt="sprites: https://elthen.itch.io/ - @pixelthen"/>
+  </p>
+  <p align="center">sprites: https://elthen.itch.io/ - @pixelthen</p>
+</a>
