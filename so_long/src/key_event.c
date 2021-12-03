@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:58:31 by jmartin           #+#    #+#             */
-/*   Updated: 2021/11/30 00:14:07 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/03 09:16:13 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	esc_win(t_view *view)
 int	key_event(int key, t_view *view)
 {
 	counter_event(view);
+	set_static_items(view, "./img/xpm/tiles/1.1.xpm", '0');
 	init_tile("./img/xpm/tiles/1.1.xpm",
 		view->player->pos->x, view->player->pos->y, view);
 	if (ft_strchr(view->map->map, 'M'))

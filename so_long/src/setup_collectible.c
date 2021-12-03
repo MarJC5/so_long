@@ -6,7 +6,7 @@
 /*   By: jmartin <jmartin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:24:26 by jmartin           #+#    #+#             */
-/*   Updated: 2021/12/01 09:45:53 by jmartin          ###   ########.fr       */
+/*   Updated: 2021/12/03 10:25:33 by jmartin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ void	open_door(t_view *view)
 
 	pos_x = view->player->pos->x;
 	pos_y = view->player->pos->y;
+	if (ft_strchr(view->map->map, 'M'))
+	{
+		set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'M');
+		set_monster_pos(view);
+		view->map->map[view->monster->pos->z] = '0';
+	}
 	set_static_items(view, "./img/xpm/tiles/1.1.xpm", 'E');
 	set_static_items(view, "./img/xpm/exit/E.1.xpm", 'E');
 	init_tile("./img/xpm/tiles/1.1.xpm", pos_x, pos_y, view);
